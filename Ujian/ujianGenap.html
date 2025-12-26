@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Ujian IT</title>
+</head>
+<body>
+<script>
+let jumlahTransaksi = parseInt(prompt("Masukkan jumlah transaksi"));
+
+let totalHarga = 0;
+let totalDiskon = 0;
+let totalPembayaran = 0;
+
+for (let i = 1; i <= jumlahTransaksi; i++) {
+    console.log("Transaksi ke-", i);
+
+    let jenisBaju = prompt("Jenis baju");
+    let hargaSatuan = parseInt(prompt("Harga satuan"));
+    let jumlahBaju = parseInt(prompt("Jumlah baju"));
+    let sesiPembelian = prompt("Sesi pembelian (pagi/malam)");
+
+    let hargaTransaksi = hargaSatuan * jumlahBaju;
+    let diskon = 0;
+
+    if (sesiPembelian === "pagi") {
+        if (jumlahBaju <= 10) {
+            diskon = 0;
+        } else if (jumlahBaju <= 20) {
+            diskon = hargaTransaksi * 0.10;
+        } else {
+            diskon = hargaTransaksi * 0.22;
+        }
+    } else if (sesiPembelian === "malam") {
+        if (jumlahBaju <= 10) {
+            diskon = hargaTransaksi * 0.15;
+        } else if (jumlahBaju <= 20) {
+            diskon = hargaTransaksi * 0.25;
+        } else {
+            diskon = hargaTransaksi * 0.35;
+        }
+    }
+
+    let bayar = hargaTransaksi - diskon;
+
+    totalHarga += hargaTransaksi;
+    totalDiskon += diskon;
+    totalPembayaran += bayar;
+
+    console.log("Jenis:", jenisBaju);
+    console.log("Total:", hargaTransaksi);
+    console.log("Diskon:", diskon);
+    console.log("Bayar:", bayar);
+}
+
+console.log("==== HASIL AKHIR ====");
+console.log("Total Harga:", totalHarga);
+console.log("Total Diskon:", totalDiskon);
+console.log("Total Pembayaran:", totalPembayaran);
+</script>
+</body>
+</html>
